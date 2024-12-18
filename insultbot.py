@@ -16,14 +16,14 @@ async def insult_members():
     guild = client.get_guild(config('SERVER_ID'))
 
     while not client.is_closed():
-
         for member in guild.members:
             if member.bot:
                 continue
             try:
                 await member.send(insult)
             except discord.Forbidden:
-                print(f"Couldn't send message to {member.name}")
+                pass
+        await asyncio.sleep(60)
 
 @client.event
 async def on_ready():
